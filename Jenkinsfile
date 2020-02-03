@@ -11,6 +11,12 @@ it is need as field to store the results of the tests.
 */
 @Field def rumTasksGen
 
+/**
+Store the version for the releases
+Env variables are not supported in the input parameters: https://issues.jenkins-ci.org/browse/JENKINS-49946
+*/
+@Field def releaseVersions
+
 pipeline {
   agent { label 'linux && immutable' }
   environment {
@@ -204,28 +210,34 @@ pipeline {
               steps {
                 deleteDir()
                 unstash 'source'
-                // TODO: gather the changes to be applied for the release to be populated in the input approval
-                //  and email
-                script {
-                  env.VERSION_TO_BE_POPULATED = 'TODO'
+                unstash 'cache'
+                dir("${BASE_DIR}") {
+                  prepareRelease() {
+                    script {
+                      sh 'npm ci'
+                      sh(label: 'Lerna version dry-run', script: 'lerna version --no-push --yes', returnStdout: true)
+                      def releaseVersions = sh(label: 'Gather versions from last commit', script: 'git log -1 --format="%b"', returnStdout: true)
+                      log(level: 'INFO', text: "Versions: ${releaseVersions}")
+                      emailext subject: '[apm-agent-rum-js] Release ready to be pushed',
+                              to: "${NOTIFY_TO}",
+                              body: "Please go to ${env.BUILD_URL}input to approve or reject within 12 hours.\n Changes: ${releaseVersions}"
+                      input(message: 'Should we release a new version?',
+                            ok: 'Yes, we should.',
+                            parameters: [text(defaultValue: "${releaseVersions}",
+                                              description: 'Look at the versions to be released. They cannot be edited here',
+                                              name: 'versions')])
+                    }
+                  }
                 }
-                emailext subject: '[apm-agent-rum-js] Release ready to be pushed',
-                        to: "${NOTIFY_TO}",
-                        body: "Please go to ${env.BUILD_URL}input to approve or reject within 12 hours.\n Changes: ${env.VERSION_TO_BE_POPULATED}"
               }
             }
             stage('Release CI') {
               options { skipDefaultCheckout() }
-              input {
-                // TODO: populate changes in the input approval
-                message 'Should we release a new version?'
-                ok 'Yes, we should.'
-              }
               steps {
                 deleteDir()
                 unstash 'source'
                 dir("${BASE_DIR}") {
-                  release() {
+                  prepareRelease() {
                     sh '''
                       npm ci
                       npm run release-ci
@@ -409,7 +421,7 @@ def wrappingUp(){
   archiveArtifacts(allowEmptyArchive: true, artifacts: "${env.BASE_DIR}/.npm/_logs,${env.BASE_DIR}/packages/**/reports/TESTS-*.xml")
 }
 
-def release(Closure body){
+def prepareRelease(Closure body){
   withNpmrc(secret: "${env.NPMRC_SECRET}") {
     withTotpVault(secret: "${env.TOTP_SECRET}", code_var_name: 'TOTP_CODE'){
       withCredentials([string(credentialsId: '2a9602aa-ab9f-4e52-baf3-b71ca88469c7', variable: 'GITHUB_TOKEN')]) {
