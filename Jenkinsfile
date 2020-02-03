@@ -25,6 +25,8 @@ pipeline {
     GITHUB_CHECK_ITS_NAME = 'Integration Tests'
     ITS_PIPELINE = 'apm-integration-tests-selector-mbp/master'
     OPBEANS_REPO = 'opbeans-frontend'
+    NPMRC_SECRET = 'secret/apm-team/ci/elastic-observability-npmjs'
+    TOTP_SECRET = 'totp-apm/code/v1v'
   }
   options {
     timeout(time: 3, unit: 'HOURS')
@@ -44,6 +46,7 @@ pipeline {
     booleanParam(name: 'saucelab_test', defaultValue: "false", description: "Enable run a Sauce lab test")
     booleanParam(name: 'parallel_test', defaultValue: "true", description: "Enable run tests in parallel")
     booleanParam(name: 'bench_ci', defaultValue: true, description: 'Enable benchmarks')
+    booleanParam(name: 'release', defaultValue: false, description: 'Release.')
   }
   stages {
     stage('Initializing'){
@@ -182,27 +185,55 @@ pipeline {
         }
         stage('Release') {
           options { skipDefaultCheckout() }
+          environment {
+            HOME = "${env.WORKSPACE}"
+          }
+          when {
+            beforeAgent true
+            allOf {
+              branch 'master'
+              expression { return params.release }
+            }
+          }
+          steps {
+              deleteDir()
+              unstash 'source'
+              dir("${BASE_DIR}") {
+                release() {
+                  sh '''
+                    npm ci
+                    npm run release-ci
+                  '''
+                }
+              }
+          }
+          post {
+            always {
+              script {
+                currentBuild.description = "${currentBuild.description?.trim() ? currentBuild.description : ''} released"
+              }
+            }
+          }
+        }
+        stage('Opbeans') {
+          options { skipDefaultCheckout() }
           when {
             beforeAgent true
             tag pattern: '@elastic/apm-rum@\\d+\\.\\d+\\.\\d+$', comparator: 'REGEXP'
           }
-          stages {
-            stage('Opbeans') {
-              environment {
-                REPO_NAME = "${OPBEANS_REPO}"
-              }
-              steps {
-                deleteDir()
-                dir("${OPBEANS_REPO}"){
-                  git credentialsId: 'f6c7695a-671e-4f4f-a331-acdce44ff9ba',
-                      url: "git@github.com:elastic/${OPBEANS_REPO}.git"
-                  sh script: ".ci/bump-version.sh '${env.BRANCH_NAME}'", label: 'Bump version'
-                  // The opbeans pipeline will trigger a release for the master branch
-                  gitPush()
-                  // The opbeans pipeline will trigger a release for the release tag
-                  gitCreateTag(tag: "${env.BRANCH_NAME}")
-                }
-              }
+          environment {
+            REPO_NAME = "${OPBEANS_REPO}"
+          }
+          steps {
+            deleteDir()
+            dir("${OPBEANS_REPO}"){
+              git credentialsId: 'f6c7695a-671e-4f4f-a331-acdce44ff9ba',
+                  url: "git@github.com:elastic/${OPBEANS_REPO}.git"
+              sh script: ".ci/bump-version.sh '${env.BRANCH_NAME}'", label: 'Bump version'
+              // The opbeans pipeline will trigger a release for the master branch
+              gitPush()
+              // The opbeans pipeline will trigger a release for the release tag
+              gitCreateTag(tag: "${env.BRANCH_NAME}")
             }
           }
         }
@@ -348,4 +379,15 @@ def wrappingUp(){
     keepLongStdio: true,
     testResults: "${env.BASE_DIR}/packages/**/reports/TESTS-*.xml")
   archiveArtifacts(allowEmptyArchive: true, artifacts: "${env.BASE_DIR}/.npm/_logs,${env.BASE_DIR}/packages/**/reports/TESTS-*.xml")
+}
+
+def release(Closure body){
+  withNpmrc(secret: "${env.NPMRC_SECRET}") {
+    withTotpVault(secret: "${env.TOTP_SECRET}", code_var_name: 'TOTP_CODE'){
+      withCredentials([string(credentialsId: '2a9602aa-ab9f-4e52-baf3-b71ca88469c7', variable: 'GITHUB_TOKEN')]) {
+        sh '.ci/scripts/prepare-git-context.sh'
+        body()
+      }
+    }
+  }
 }
