@@ -184,33 +184,61 @@ pipeline {
           }
         }
         stage('Release') {
-          options { skipDefaultCheckout() }
+          options {
+            skipDefaultCheckout()
+            timeout(time: 12, unit: 'HOURS')
+          }
           environment {
             HOME = "${env.WORKSPACE}"
           }
           when {
             beforeAgent true
+            beforeInput true
             allOf {
               branch 'master'
               expression { return params.release }
             }
           }
-          steps {
-              deleteDir()
-              unstash 'source'
-              dir("${BASE_DIR}") {
-                release() {
-                  sh '''
-                    npm ci
-                    npm run release-ci
-                  '''
+          stages {
+            stage('Notify') {
+              steps {
+                deleteDir()
+                unstash 'source'
+                // TODO: gather the changes to be applied for the release to be populated in the input approval
+                //  and email
+                script {
+                  env.VERSION_TO_BE_POPULATED = 'TODO'
+                }
+                emailext subject: '[apm-agent-rum-js] Release ready to be pushed',
+                        to: "${NOTIFY_TO}",
+                        body: "Please go to ${env.BUILD_URL}input to approve or reject within 12 hours.\n Changes: ${env.VERSION_TO_BE_POPULATED}"
+              }
+            }
+            stage('Release CI') {
+              options { skipDefaultCheckout() }
+              input {
+                // TODO: populate changes in the input approval
+                message 'Should we release a new version?'
+                ok 'Yes, we should.'
+              }
+              steps {
+                deleteDir()
+                unstash 'source'
+                dir("${BASE_DIR}") {
+                  release() {
+                    sh '''
+                      npm ci
+                      npm run release-ci
+                    '''
+                  }
                 }
               }
-          }
-          post {
-            always {
-              script {
-                currentBuild.description = "${currentBuild.description?.trim() ? currentBuild.description : ''} released"
+              post {
+                always {
+                  script {
+                    currentBuild.description = "${currentBuild.description?.trim() ? currentBuild.description : ''} released"
+                  }
+                }
               }
             }
           }
