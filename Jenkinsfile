@@ -11,12 +11,6 @@ it is need as field to store the results of the tests.
 */
 @Field def rumTasksGen
 
-/**
-Store the version for the releases
-Env variables are not supported in the input parameters: https://issues.jenkins-ci.org/browse/JENKINS-49946
-*/
-@Field def releaseVersions
-
 pipeline {
   agent { label 'linux && immutable' }
   environment {
@@ -207,6 +201,7 @@ pipeline {
           }
           stages {
             stage('Notify') {
+              options { skipDefaultCheckout() }
               steps {
                 deleteDir()
                 unstash 'source'
@@ -214,18 +209,14 @@ pipeline {
                 dir("${BASE_DIR}") {
                   prepareRelease() {
                     script {
-                      sh 'npm ci'
                       sh(label: 'Lerna version dry-run', script: 'lerna version --no-push --yes', returnStdout: true)
                       def releaseVersions = sh(label: 'Gather versions from last commit', script: 'git log -1 --format="%b"', returnStdout: true)
                       log(level: 'INFO', text: "Versions: ${releaseVersions}")
-                      emailext subject: '[apm-agent-rum-js] Release ready to be pushed',
-                              to: "${NOTIFY_TO}",
-                              body: "Please go to ${env.BUILD_URL}input to approve or reject within 12 hours.\n Changes: ${releaseVersions}"
-                      input(message: 'Should we release a new version?',
-                            ok: 'Yes, we should.',
-                            parameters: [text(defaultValue: "${releaseVersions}",
-                                              description: 'Look at the versions to be released. They cannot be edited here',
-                                              name: 'versions')])
+                      emailext subject: "[${env.REPO}] Release ready to be pushed", to: "${NOTIFY_TO}",
+                               body: "Please go to ${env.BUILD_URL}input to approve or reject within 12 hours.\n Changes: ${releaseVersions}"
+                      input(message: 'Should we release a new version?', ok: 'Yes, we should.',
+                            parameters: [text(description: 'Look at the versions to be released. They cannot be edited here',
+                                              defaultValue: "${releaseVersions}", name: 'versions')])
                     }
                   }
                 }
@@ -238,10 +229,7 @@ pipeline {
                 unstash 'source'
                 dir("${BASE_DIR}") {
                   prepareRelease() {
-                    sh '''
-                      npm ci
-                      npm run release-ci
-                    '''
+                    sh 'npm run release-ci'
                   }
                 }
               }
@@ -426,6 +414,7 @@ def prepareRelease(Closure body){
     withTotpVault(secret: "${env.TOTP_SECRET}", code_var_name: 'TOTP_CODE'){
       withCredentials([string(credentialsId: '2a9602aa-ab9f-4e52-baf3-b71ca88469c7', variable: 'GITHUB_TOKEN')]) {
         sh '.ci/scripts/prepare-git-context.sh'
+        sh 'npm ci'
         body()
       }
     }
