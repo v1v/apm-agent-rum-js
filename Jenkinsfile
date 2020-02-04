@@ -193,7 +193,6 @@ pipeline {
           }
           when {
             beforeAgent true
-            beforeInput true
             allOf {
               branch 'master'
               expression { return params.release }
@@ -209,7 +208,7 @@ pipeline {
                 dir("${BASE_DIR}") {
                   prepareRelease() {
                     script {
-                      sh(label: 'Lerna version dry-run', script: 'lerna version --no-push --yes', returnStdout: true)
+                      sh(label: 'Lerna version dry-run', script: 'npx lerna version --no-push --yes', returnStdout: true)
                       def releaseVersions = sh(label: 'Gather versions from last commit', script: 'git log -1 --format="%b"', returnStdout: true)
                       log(level: 'INFO', text: "Versions: ${releaseVersions}")
                       emailext subject: "[${env.REPO}] Release ready to be pushed", to: "${NOTIFY_TO}",
@@ -409,13 +408,18 @@ def wrappingUp(){
   archiveArtifacts(allowEmptyArchive: true, artifacts: "${env.BASE_DIR}/.npm/_logs,${env.BASE_DIR}/packages/**/reports/TESTS-*.xml")
 }
 
-def prepareRelease(Closure body){
-  withNpmrc(secret: "${env.NPMRC_SECRET}") {
+def prepareRelease(String nodeVersion='node:lts', Closure body){
+  withNpmrc(secret: "${env.NPMRC_SECRET}", path: "${env.WORKSPACE}/${env.BASE_DIR}") {
     withTotpVault(secret: "${env.TOTP_SECRET}", code_var_name: 'TOTP_CODE'){
-      withCredentials([string(credentialsId: '2a9602aa-ab9f-4e52-baf3-b71ca88469c7', variable: 'GITHUB_TOKEN')]) {
-        sh '.ci/scripts/prepare-git-context.sh'
-        sh 'npm ci'
-        body()
+      withCredentials([usernamePassword(credentialsId: '2a9602aa-ab9f-4e52-baf3-b71ca88469c7-UserAndToken',
+                                        passwordVariable: 'GITHUB_TOKEN', usernameVariable: 'GITHUB_USER')]) {
+        docker.image(nodeVersion).inside(){
+          withEnv(["HOME=${env.WORKSPACE}/${env.BASE_DIR}"]) {
+            sh '.ci/scripts/prepare-git-context.sh'
+            sh 'npm ci'
+            body()
+          }
+        }
       }
     }
   }
