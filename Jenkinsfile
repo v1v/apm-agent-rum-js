@@ -246,6 +246,7 @@ pipeline {
               }
               post {
                 always {
+                  wrappingUp()
                   script {
                     currentBuild.description = "${currentBuild.description?.trim() ? currentBuild.description : ''} released"
                   }
