@@ -90,6 +90,10 @@ pipeline {
         Execute unit tests.
         */
         stage('Test') {
+          when {
+            beforeAgent true
+            expression { return false }
+          }
           steps {
             withGithubNotify(context: 'Test', tab: 'tests') {
               deleteDir()
@@ -104,6 +108,10 @@ pipeline {
         Execute code coverange only once.
         */
         stage('Coverage') {
+          when {
+            beforeAgent true
+            expression { return false }
+          }
           steps {
             withGithubNotify(context: 'Coverage') {
               // No scope is required as the coverage should run for all of them
@@ -130,6 +138,7 @@ pipeline {
           when {
             beforeAgent true
             allOf {
+              expression { return false }
               anyOf {
                 branch 'master'
                 tag pattern: 'v\\d+\\.\\d+\\.\\d+.*', comparator: 'REGEXP'
@@ -166,6 +175,7 @@ pipeline {
           when {
             beforeAgent true
             allOf {
+              expression { return false }
               anyOf {
                 environment name: 'GIT_BUILD_CAUSE', value: 'pr'
                 expression { return !params.Run_As_Master_Branch }
@@ -194,7 +204,7 @@ pipeline {
           when {
             beforeAgent true
             allOf {
-              branch 'master'
+              branch 'master1'
               expression { return params.release }
             }
           }
@@ -211,8 +221,10 @@ pipeline {
                       sh(label: 'Lerna version dry-run', script: 'npx lerna version --no-push --yes', returnStdout: true)
                       def releaseVersions = sh(label: 'Gather versions from last commit', script: 'git log -1 --format="%b"', returnStdout: true)
                       log(level: 'INFO', text: "Versions: ${releaseVersions}")
-                      emailext subject: "[${env.REPO}] Release ready to be pushed", to: "${NOTIFY_TO}",
-                               body: "Please go to ${env.BUILD_URL}input to approve or reject within 12 hours.\n Changes: ${releaseVersions}"
+                      catchError(buildResult: 'SUCCESS', message: 'Error with email') {
+                        emailext subject: "[${env.REPO}] Release ready to be pushed", to: "${NOTIFY_TO}",
+                                body: "Please go to ${env.BUILD_URL}input to approve or reject within 12 hours.\n Changes: ${releaseVersions}"
+                      }
                       input(message: 'Should we release a new version?', ok: 'Yes, we should.',
                             parameters: [text(description: 'Look at the versions to be released. They cannot be edited here',
                                               defaultValue: "${releaseVersions}", name: 'versions')])
