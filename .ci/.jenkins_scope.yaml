@@ -1,6 +1,6 @@
 SCOPE:
-  - "@elastic/apm-rum-core"
-  - "@elastic/apm-rum"
-  - "@elastic/apm-rum-react"
-  - "@elastic/apm-rum-angular"
+  - "@v1v/apm-rum-core"
+  - "@v1v/apm-rum"
+  - "@v1v/apm-rum-react"
+  - "@v1v/apm-rum-angular"
   - "@v1v/apm-rum-vue"

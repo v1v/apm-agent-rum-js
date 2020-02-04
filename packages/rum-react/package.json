@@ -1,5 +1,5 @@
 {
-  "name": "@elastic/apm-rum-react",
+  "name": "@v1v/apm-rum-react",
   "version": "0.3.4",
   "description": "Elastic APM Real User Monitoring for React applications",
   "author": "Hamid <h.jahtalab@gmail.com>",
@@ -41,7 +41,7 @@
     "url": "https://github.com/elastic/apm-agent-rum-js/issues"
   },
   "dependencies": {
-    "@elastic/apm-rum": "file:../rum",
+    "@v1v/apm-rum": "file:../rum",
     "hoist-non-react-statics": "^3.3.0"
   },
   "peerDependencies": {

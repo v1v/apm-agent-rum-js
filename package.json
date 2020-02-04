@@ -1,11 +1,11 @@
 {
-  "name": "elastic-apm-rum",
+  "name": "v1v-apm-rum",
   "private": true,
   "version": "0.0.0-monorepo",
   "description": "Elastic APM RUM agent",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elastic/apm-agent-rum-js.git"
+    "url": "https://github.com/v1v/apm-agent-rum-js.git"
   },
   "scripts": {
     "version": "node scripts/prompt-release",
@@ -140,10 +140,10 @@
     "zone.js": "^0.10.2"
   },
   "dependencies": {
-    "@elastic/apm-rum": "file:packages/rum",
-    "@elastic/apm-rum-angular": "file:packages/rum-angular",
-    "@elastic/apm-rum-core": "file:packages/rum-core",
-    "@elastic/apm-rum-react": "file:packages/rum-react",
+    "@v1v/apm-rum": "file:packages/rum",
+    "@v1v/apm-rum-angular": "file:packages/rum-angular",
+    "@v1v/apm-rum-core": "file:packages/rum-core",
+    "@v1v/apm-rum-react": "file:packages/rum-react",
     "@v1v/apm-rum-vue": "file:packages/rum-vue"
   }
 }

@@ -52,7 +52,7 @@ const prodConfig = name => ({
 })
 
 const rumDevConfig = devConfig({
-  'elastic-apm-rum': join(SRC_DIR, 'index.js')
+  'v1v-apm-rum': join(SRC_DIR, 'index.js')
 })
 const rumProdConfig = { ...rumDevConfig, ...prodConfig('apm-rum') }
 

@@ -23,7 +23,7 @@
  *
  */
 
-import { apm } from '@elastic/apm-rum'
+import { apm } from '@v1v/apm-rum'
 import { getWithTransaction } from './get-with-transaction'
 import { getApmRoute } from './get-apm-route'
 

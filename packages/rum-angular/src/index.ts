@@ -23,7 +23,7 @@
  *
  */
 
-import { apm } from '@elastic/apm-rum'
+import { apm } from '@v1v/apm-rum'
 import { ApmService } from './apm-service'
 import { ApmErrorHandler } from './error-handler'
 

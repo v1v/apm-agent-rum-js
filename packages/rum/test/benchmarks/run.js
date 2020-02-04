@@ -75,7 +75,7 @@ const REPORTS_DIR = join(__dirname, '../../reports')
     const results = calculateResults(resultMap)
 
     console.log(
-      '@elastic/apm-rum benchmarks',
+      '@v1v/apm-rum benchmarks',
       JSON.stringify(results, undefined, 2)
     )
 

@@ -85,7 +85,7 @@ function getMinifiedApmBundle(filename) {
 }
 
 function getApmBundleSize() {
-  const content = getMinifiedApmBundle('elastic-apm-rum.umd.min.js')
+  const content = getMinifiedApmBundle('v1v-apm-rum.umd.min.js')
   /**
    * To match the level with our bundlesize check
    */

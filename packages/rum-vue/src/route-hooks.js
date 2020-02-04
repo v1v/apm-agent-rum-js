@@ -23,7 +23,7 @@
  *
  */
 
-import { scheduleMicroTask } from '@elastic/apm-rum-core'
+import { scheduleMicroTask } from '@v1v/apm-rum-core'
 
 export function routeHooks(router, apm) {
   let transaction

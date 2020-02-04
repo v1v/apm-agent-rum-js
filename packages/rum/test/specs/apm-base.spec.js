@@ -24,8 +24,8 @@
  */
 
 import ApmBase from '../../src/apm-base'
-import { createServiceFactory, PAGE_LOAD } from '@elastic/apm-rum-core'
-import { TRANSACTION_END } from '@elastic/apm-rum-core/src/common/constants'
+import { createServiceFactory, PAGE_LOAD } from '@v1v/apm-rum-core'
+import { TRANSACTION_END } from '@v1v/apm-rum-core/src/common/constants'
 import bootstrap from '../../src/bootstrap'
 import { getGlobalConfig } from '../../../../dev-utils/test-config'
 import { Promise } from 'es6-promise'

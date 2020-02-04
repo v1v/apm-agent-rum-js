@@ -7,11 +7,11 @@ Please see our <<getting-started, Getting started guide>> for configuring the Re
 [[installing-react-integration]]
 ==== Installing Elastic APM React package
 
-Install the `@elastic/apm-rum-react` package as a dependency to your application:
+Install the `@v1v/apm-rum-react` package as a dependency to your application:
 
 [source,bash]
 ----
-npm install @elastic/apm-rum-react --save
+npm install @v1v/apm-rum-react --save
 ----
 
 [float]
@@ -29,11 +29,11 @@ as its type.
 NOTE: Currently `ApmRoute` only supports applications using 
 https://github.com/ReactTraining/react-router[`react-router`] library.
 
-First you should import `ApmRoute` from the `@elastic/apm-rum-react` package:
+First you should import `ApmRoute` from the `@v1v/apm-rum-react` package:
 
 [source,js]
 ----
-import { ApmRoute } from '@elastic/apm-rum-react'
+import { ApmRoute } from '@v1v/apm-rum-react'
 ----
 
 Then, you should replace `Route` components from the `react-router` library
@@ -74,11 +74,11 @@ please instrument the individual component using `withTransaction` in these case
 [float]
 ===== Instrumenting individual React components
 
-First you should import `withTransaction` from the `@elastic/apm-rum-react` package:
+First you should import `withTransaction` from the `@v1v/apm-rum-react` package:
 
 [source,js]
 ----
-import { withTransaction } from '@elastic/apm-rum-react'
+import { withTransaction } from '@v1v/apm-rum-react'
 ----
 
 
@@ -107,7 +107,7 @@ associated with the components, you'll need to manually instrument the code with
 ----
 import React, { Component, Suspense, lazy } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { withTransaction } from '@elastic/apm-rum-react'
+import { withTransaction } from '@v1v/apm-rum-react'
 
 const Loading = () => <div>Loading</div>
 const LazyRouteComponent = lazy(() => import('./lazy-component'))

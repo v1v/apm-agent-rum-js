@@ -22,14 +22,14 @@
  * THE SOFTWARE.
  *
  */
-const opentracing = require('@elastic/apm-rum/dist/lib/opentracing')
+const opentracing = require('@v1v/apm-rum/dist/lib/opentracing')
 const {
   init,
   apm,
   apmBase,
   ApmBase,
   createTracer
-} = require('@elastic/apm-rum/dist/lib/opentracing')
+} = require('@v1v/apm-rum/dist/lib/opentracing')
 
 describe('opentracing', () => {
   it('should have default and named exports', () => {

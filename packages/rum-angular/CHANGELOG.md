@@ -3,15 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.4.1](https://github.com/elastic/apm-agent-rum-js/compare/@elastic/apm-rum-angular@0.4.0...@elastic/apm-rum-angular@0.4.1) (2020-01-30)
+## [0.4.1](https://github.com/elastic/apm-agent-rum-js/compare/@v1v/apm-rum-angular@0.4.0...@v1v/apm-rum-angular@0.4.1) (2020-01-30)
 
-**Note:** Version bump only for package @elastic/apm-rum-angular
-
-
+**Note:** Version bump only for package @v1v/apm-rum-angular
 
 
 
-# [0.4.0](https://github.com/elastic/apm-agent-rum-js/compare/@elastic/apm-rum-angular@0.3.0...@elastic/apm-rum-angular@0.4.0) (2020-01-15)
+
+
+# [0.4.0](https://github.com/elastic/apm-agent-rum-js/compare/@v1v/apm-rum-angular@0.3.0...@v1v/apm-rum-angular@0.4.0) (2020-01-15)
 
 
 ### Features
@@ -22,15 +22,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.3.0](https://github.com/elastic/apm-agent-rum-js/compare/@elastic/apm-rum-angular@0.2.1...@elastic/apm-rum-angular@0.3.0) (2019-11-19)
+# [0.3.0](https://github.com/elastic/apm-agent-rum-js/compare/@v1v/apm-rum-angular@0.2.1...@v1v/apm-rum-angular@0.3.0) (2019-11-19)
 
-**Note:** Version bump only for package @elastic/apm-rum-angular
-
-
+**Note:** Version bump only for package @v1v/apm-rum-angular
 
 
 
-## [0.2.1](https://github.com/elastic/apm-agent-rum-js/compare/@elastic/apm-rum-angular@0.2.0...@elastic/apm-rum-angular@0.2.1) (2019-10-09)
+
+
+## [0.2.1](https://github.com/elastic/apm-agent-rum-js/compare/@v1v/apm-rum-angular@0.2.0...@v1v/apm-rum-angular@0.2.1) (2019-10-09)
 
 
 ### Bug Fixes
@@ -41,7 +41,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.2.0](https://github.com/elastic/apm-agent-rum-js/compare/@elastic/apm-rum-angular@0.1.1...@elastic/apm-rum-angular@0.2.0) (2019-09-30)
+# [0.2.0](https://github.com/elastic/apm-agent-rum-js/compare/@v1v/apm-rum-angular@0.1.1...@v1v/apm-rum-angular@0.2.0) (2019-09-30)
 
 
 ### Bug Fixes
@@ -57,7 +57,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.1.1](https://github.com/elastic/apm-agent-rum-js/compare/@elastic/apm-rum-angular@0.1.0...@elastic/apm-rum-angular@0.1.1) (2019-09-17)
+## [0.1.1](https://github.com/elastic/apm-agent-rum-js/compare/@v1v/apm-rum-angular@0.1.0...@v1v/apm-rum-angular@0.1.1) (2019-09-17)
 
 
 ### Bug Fixes

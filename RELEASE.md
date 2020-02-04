@@ -23,11 +23,11 @@ To publish all the packages run `npm run release` with the required environment 
 
 ### Releasing single package
 
-To publish a single package, run `npm run release-package -- @elastic/apm-rum` which uses `lerna publish` under the hood to publish single package to NPM
+To publish a single package, run `npm run release-package -- @v1v/apm-rum` which uses `lerna publish` under the hood to publish single package to NPM
 
 ### Releasing artifacts to GitHub
 
-Use `npm run github-release` in the root directory, the script takes care packaging and creating a release for `@elastic/apm-rum` in GitHub with the previous annonated tag.
+Use `npm run github-release` in the root directory, the script takes care packaging and creating a release for `@v1v/apm-rum` in GitHub with the previous annonated tag.
 
 **Note: Make sure you pass the GITHUB_TOKEN (with push access) in your environment variable while releasing**
 

@@ -258,7 +258,7 @@ pipeline {
           options { skipDefaultCheckout() }
           when {
             beforeAgent true
-            tag pattern: '@elastic/apm-rum@\\d+\\.\\d+\\.\\d+$', comparator: 'REGEXP'
+            tag pattern: '@v1v/apm-rum@\\d+\\.\\d+\\.\\d+$', comparator: 'REGEXP'
           }
           environment {
             REPO_NAME = "${OPBEANS_REPO}"

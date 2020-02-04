@@ -23,11 +23,7 @@
  *
  */
 
-import {
-  getInstrumentationFlags,
-  PAGE_LOAD,
-  ERROR
-} from '@elastic/apm-rum-core'
+import { getInstrumentationFlags, PAGE_LOAD, ERROR } from '@v1v/apm-rum-core'
 
 class ApmBase {
   constructor(serviceFactory, disable) {
