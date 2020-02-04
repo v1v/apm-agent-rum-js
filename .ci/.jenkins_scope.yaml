@@ -3,4 +3,4 @@ SCOPE:
   - "@elastic/apm-rum"
   - "@elastic/apm-rum-react"
   - "@elastic/apm-rum-angular"
-  - "@elastic/apm-rum-vue"
+  - "@v1v/apm-rum-vue"

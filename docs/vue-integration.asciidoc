@@ -6,11 +6,11 @@ This document covers how to use Real User Monitoring JavaScript agent with Vue a
 [[installing-vue-integration]]
 ==== Installing Elastic APM Vue package
 
-Install the `@elastic/apm-rum-vue` package as a dependency to your application:
+Install the `@v1v/apm-rum-vue` package as a dependency to your application:
 
 [source,bash]
 ----
-npm install --save @elastic/apm-rum-vue 
+npm install --save @v1v/apm-rum-vue 
 ----
 
 [float]
@@ -37,7 +37,7 @@ The package exposes `ApmVuePlugin` which is a Vue Plugin and can be installed in
 ----
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { ApmVuePlugin } from '@elastic/apm-rum-vue'
+import { ApmVuePlugin } from '@v1v/apm-rum-vue'
 
 const Home = { template: '<div>home</div>' }
 

@@ -1,5 +1,5 @@
 {
-  "name": "@elastic/apm-rum-vue",
+  "name": "@v1v/apm-rum-vue",
   "version": "0.3.0",
   "description": "Elastic APM Real User Monitoring for Vue applications",
   "keywords": [
