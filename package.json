@@ -140,10 +140,10 @@
     "zone.js": "^0.10.2"
   },
   "dependencies": {
-    "@v1v/apm-rum": "file:packages/rum",
-    "@v1v/apm-rum-angular": "file:packages/rum-angular",
-    "@v1v/apm-rum-core": "file:packages/rum-core",
-    "@v1v/apm-rum-react": "file:packages/rum-react",
-    "@v1v/apm-rum-vue": "file:packages/rum-vue"
+    "v1v-apm-rum": "file:packages/rum",
+    "v1v-apm-rum-angular": "file:packages/rum-angular",
+    "v1v-apm-rum-core": "file:packages/rum-core",
+    "v1v-apm-rum-react": "file:packages/rum-react",
+    "v1v-apm-rum-vue": "file:packages/rum-vue"
   }
 }

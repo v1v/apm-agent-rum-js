@@ -23,7 +23,7 @@
  *
  */
 
-import { ApmBase, init } from '@v1v/apm-rum'
+import { ApmBase, init } from 'v1v-apm-rum'
 
 const config: AgentConfigOptions = {
   active: true,

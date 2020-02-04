@@ -5,7 +5,7 @@ This package provides Real User Monitoring (RUM) for Vue applications.
 ### Installation
 
 ```
-npm install @v1v/apm-rum-vue
+npm install v1v-apm-rum-vue
 ```
 
 ## Documentation

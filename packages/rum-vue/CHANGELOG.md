@@ -3,23 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.3.0](https://github.com/elastic/apm-agent-rum-js/compare/@v1v/apm-rum-vue@0.2.0...@v1v/apm-rum-vue@0.3.0) (2020-01-30)
+# [0.3.0](https://github.com/v1v/apm-agent-rum-js/compare/v1v-apm-rum-vue@0.2.0...v1v-apm-rum-vue@0.3.0) (2020-01-30)
 
 
 ### Features
 
-* **rum-vue:** capture errors in vue app automatically ([#575](https://github.com/elastic/apm-agent-rum-js/issues/575)) ([1a2e214](https://github.com/elastic/apm-agent-rum-js/commit/1a2e2148ca91ff7073b898963d73631233eb3b99))
+* **rum-vue:** capture errors in vue app automatically ([#575](https://github.com/v1v/apm-agent-rum-js/issues/575)) ([1a2e214](https://github.com/v1v/apm-agent-rum-js/commit/1a2e2148ca91ff7073b898963d73631233eb3b99))
 
 
 
 
 
-# [0.2.0](https://github.com/elastic/apm-agent-rum-js/compare/@v1v/apm-rum-vue@0.1.0...@v1v/apm-rum-vue@0.2.0) (2020-01-15)
+# [0.2.0](https://github.com/v1v/apm-agent-rum-js/compare/v1v-apm-rum-vue@0.1.0...v1v-apm-rum-vue@0.2.0) (2020-01-15)
 
 
 ### Features
 
-* **rum-vue:** only hook router if provided ([#553](https://github.com/elastic/apm-agent-rum-js/issues/553)) ([82a83fa](https://github.com/elastic/apm-agent-rum-js/commit/82a83fab84151575405443d342147e7459441b81))
+* **rum-vue:** only hook router if provided ([#553](https://github.com/v1v/apm-agent-rum-js/issues/553)) ([82a83fa](https://github.com/v1v/apm-agent-rum-js/commit/82a83fab84151575405443d342147e7459441b81))
 
 
 
@@ -29,4 +29,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* vue router integration with rum agent ([#460](https://github.com/elastic/apm-agent-rum-js/issues/460)) ([228e157](https://github.com/elastic/apm-agent-rum-js/commit/228e157))
+* vue router integration with rum agent ([#460](https://github.com/v1v/apm-agent-rum-js/issues/460)) ([228e157](https://github.com/v1v/apm-agent-rum-js/commit/228e157))

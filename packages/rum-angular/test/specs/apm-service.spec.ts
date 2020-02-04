@@ -33,8 +33,8 @@ import { NgModule, Component } from '@angular/core'
 import { Routes, Router } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
 import { Location } from '@angular/common'
-import { ApmBase } from '@v1v/apm-rum'
-import { createServiceFactory } from '@v1v/apm-rum-core'
+import { ApmBase } from 'v1v-apm-rum'
+import { createServiceFactory } from 'v1v-apm-rum-core'
 
 @Component({
   template: 'LazyHome'

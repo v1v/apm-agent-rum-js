@@ -1,5 +1,5 @@
 {
-  "name": "@v1v/apm-rum-vue",
+  "name": "v1v-apm-rum-vue",
   "version": "0.3.0",
   "description": "Elastic APM Real User Monitoring for Vue applications",
   "keywords": [
@@ -39,14 +39,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/elastic/apm-agent-rum-js.git",
+    "url": "https://github.com/v1v/apm-agent-rum-js.git",
     "directory": "packages/rum-vue"
   },
   "bugs": {
-    "url": "https://github.com/elastic/apm-agent-rum-js/issues"
+    "url": "https://github.com/v1v/apm-agent-rum-js/issues"
   },
   "dependencies": {
-    "@v1v/apm-rum": "file:../rum",
-    "@v1v/apm-rum-core": "file:../rum-core"
+    "v1v-apm-rum": "file:../rum",
+    "v1v-apm-rum-core": "file:../rum-core"
   }
 }

@@ -9,7 +9,7 @@
 [[typescript]]
 === Using with TypeScript
 
-RUM agent publishes the type definitions for the `@v1v/apm-rum` package via `types` property in `package.json`.
+RUM agent publishes the type definitions for the `v1v-apm-rum` package via `types` property in `package.json`.
 If you are importing the package on a TypeScript codebase, you will get automatic code completion, hover info
 and method signature information on supported platforms (Visual Studio Code, etc)
 

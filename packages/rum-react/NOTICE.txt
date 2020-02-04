@@ -1,10 +1,10 @@
 
-@v1v/apm-rum-react
+v1v-apm-rum-react
 Copyright (c) 2017-present, Elasticsearch BV
 
 
 ---
-This product relies on @v1v/apm-rum
+This product relies on v1v-apm-rum
 
 MIT License
 
@@ -30,12 +30,12 @@ THE SOFTWARE.
 
 
 
-@v1v/apm-rum
+v1v-apm-rum
 Copyright (c) 2017-present, Elasticsearch BV
 
 
 ---
-This product relies on @v1v/apm-rum-core
+This product relies on v1v-apm-rum-core
 
 MIT License
 
@@ -61,7 +61,7 @@ THE SOFTWARE.
 
 
 
-@v1v/apm-rum-core
+v1v-apm-rum-core
 Copyright (c) 2017-present, Elasticsearch BV
 
 

@@ -15,7 +15,7 @@ pipeline {
   agent { label 'linux && immutable' }
   environment {
     REPO = 'apm-agent-rum-js'
-    BASE_DIR = "src/github.com/elastic/${env.REPO}"
+    BASE_DIR = "src/github.com/v1v/${env.REPO}"
     NOTIFY_TO = credentials('notify-to')
     JOB_GCS_BUCKET = credentials('gcs-bucket')
     PIPELINE_LOG_LEVEL='INFO'
@@ -245,8 +245,10 @@ pipeline {
                 }
               }
               post {
+                failure {
+                  archiveArtifacts(allowEmptyArchive: true, artifacts: "${env.BASE_DIR}/.npm/_logs/*.*")
+                }
                 always {
-                  wrappingUp()
                   script {
                     currentBuild.description = "${currentBuild.description?.trim() ? currentBuild.description : ''} released"
                   }
@@ -259,7 +261,7 @@ pipeline {
           options { skipDefaultCheckout() }
           when {
             beforeAgent true
-            tag pattern: '@v1v/apm-rum@\\d+\\.\\d+\\.\\d+$', comparator: 'REGEXP'
+            tag pattern: 'v1v-apm-rum@\\d+\\.\\d+\\.\\d+$', comparator: 'REGEXP'
           }
           environment {
             REPO_NAME = "${OPBEANS_REPO}"
@@ -268,7 +270,7 @@ pipeline {
             deleteDir()
             dir("${OPBEANS_REPO}"){
               git credentialsId: 'f6c7695a-671e-4f4f-a331-acdce44ff9ba',
-                  url: "git@github.com:elastic/${OPBEANS_REPO}.git"
+                  url: "git@github.com:v1v/${OPBEANS_REPO}.git"
               sh script: ".ci/bump-version.sh '${env.BRANCH_NAME}'", label: 'Bump version'
               // The opbeans pipeline will trigger a release for the master branch
               gitPush()

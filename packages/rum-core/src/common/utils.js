@@ -139,7 +139,7 @@ function isPlatformSupported() {
  *
  * TODO: Remove string conversion in the next major release since
  * support for boolean and number in the APM server has landed in 6.7
- * https://github.com/elastic/apm-server/pull/1712/
+ * https://github.com/v1v/apm-server/pull/1712/
  */
 function setLabel(key, value, obj) {
   if (!obj || !key) return

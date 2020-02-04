@@ -25,7 +25,7 @@
 
 import { Promise } from 'es6-promise'
 import { apmBase } from '../../src/'
-import { isPlatformSupported } from '@v1v/apm-rum-core'
+import { isPlatformSupported } from 'v1v-apm-rum-core'
 import { getGlobalConfig } from '../../../../dev-utils/test-config'
 
 describe('index', function() {

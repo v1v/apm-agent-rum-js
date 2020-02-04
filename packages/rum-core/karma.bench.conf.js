@@ -78,7 +78,7 @@ module.exports = function(config) {
           }
         )
         console.log(
-          '@v1v/apm-rum-core benchmarks',
+          'v1v-apm-rum-core benchmarks',
           JSON.stringify(summary, undefined, 2)
         )
         return { type: 'benchmarkjs', summary }

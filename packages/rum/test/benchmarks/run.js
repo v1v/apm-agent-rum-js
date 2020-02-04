@@ -74,10 +74,7 @@ const REPORTS_DIR = join(__dirname, '../../reports')
 
     const results = calculateResults(resultMap)
 
-    console.log(
-      '@v1v/apm-rum benchmarks',
-      JSON.stringify(results, undefined, 2)
-    )
+    console.log('v1v-apm-rum benchmarks', JSON.stringify(results, undefined, 2))
 
     const filePath = join(REPORTS_DIR, 'rum-benchmarks.json')
     writeFileSync(

@@ -23,7 +23,7 @@
  *
  */
 
-import { PAGE_LOAD } from '@v1v/apm-rum-core'
+import { PAGE_LOAD } from 'v1v-apm-rum-core'
 import createApmBase from '../'
 import { renderTestElement } from '../utils'
 

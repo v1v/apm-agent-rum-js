@@ -23,7 +23,7 @@
  *
  */
 
-import { apmBase } from '@v1v/apm-rum'
+import { apmBase } from 'v1v-apm-rum'
 import { routeHooks } from './route-hooks'
 import { getErrorHandler } from './error-handler'
 

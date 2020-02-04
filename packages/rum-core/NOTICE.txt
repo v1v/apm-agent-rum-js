@@ -1,5 +1,5 @@
 
-@v1v/apm-rum-core
+v1v-apm-rum-core
 Copyright (c) 2017-present, Elasticsearch BV
 
 

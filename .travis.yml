@@ -35,23 +35,23 @@ jobs:
     - stage: test
       env:
         - STACK_VERSION=8.0.0-SNAPSHOT
-        - SCOPE=@v1v/apm-rum-core
+        - SCOPE=v1v-apm-rum-core
     - stage: test
       env:
         - STACK_VERSION=8.0.0-SNAPSHOT
-        - SCOPE=@v1v/apm-rum
+        - SCOPE=v1v-apm-rum
     - stage: test
       env:
         - STACK_VERSION=8.0.0-SNAPSHOT
-        - SCOPE=@v1v/apm-rum-react
+        - SCOPE=v1v-apm-rum-react
     - stage: test
       env:
         - STACK_VERSION=8.0.0-SNAPSHOT
-        - SCOPE=@v1v/apm-rum-angular
+        - SCOPE=v1v-apm-rum-angular
     - stage: test
       env:
         - STACK_VERSION=8.0.0-SNAPSHOT
-        - SCOPE=@v1v/apm-rum-vue
+        - SCOPE=v1v-apm-rum-vue
 addons:
   apt:
     packages:

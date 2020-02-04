@@ -68,7 +68,7 @@ describe('Browser bundle test', () => {
   })
 
   describe('main version', () => {
-    const mainEntry = require.resolve('@v1v/apm-rum/dist/lib/index.js')
+    const mainEntry = require.resolve('v1v-apm-rum/dist/lib/index.js')
     it('not produce any errors when run without babel', done => {
       const config = getConfig(mainEntry)
       return runWebpack(config, error => {
@@ -79,7 +79,7 @@ describe('Browser bundle test', () => {
   })
 
   describe('module version', () => {
-    const moduleEntry = require.resolve('@v1v/apm-rum/dist/es/index.js')
+    const moduleEntry = require.resolve('v1v-apm-rum/dist/es/index.js')
     it('not produce any errors when run without babel', done => {
       const config = getConfig(moduleEntry)
       return runWebpack(config, error => {

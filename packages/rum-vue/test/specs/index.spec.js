@@ -25,8 +25,8 @@
 
 import { createLocalVue, mount } from '@vue/test-utils'
 import VueRouter from 'vue-router'
-import { ApmBase } from '@v1v/apm-rum'
-import { createServiceFactory } from '@v1v/apm-rum-core'
+import { ApmBase } from 'v1v-apm-rum'
+import { createServiceFactory } from 'v1v-apm-rum-core'
 import { ApmVuePlugin } from '../../src'
 
 describe('APM route hooks', () => {

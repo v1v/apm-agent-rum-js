@@ -6,11 +6,11 @@ This document covers how to use Real User Monitoring JavaScript agent with Angul
 [[installing-angular-integration]]
 ==== Installing Elastic APM Angular package
 
-Install the `@v1v/apm-rum-angular` package as a dependency to your application:
+Install the `v1v-apm-rum-angular` package as a dependency to your application:
 
 [source,bash]
 ----
-npm install @v1v/apm-rum-angular --save
+npm install v1v-apm-rum-angular --save
 ----
 
 [float]
@@ -27,7 +27,7 @@ the RUM agent has to start capturing all the resources and API calls as soon as 
 ----
 import { NgModule, Inject } from '@angular/core'
 import { Routes, Router, RouterModule } from '@angular/router'
-import { ApmService } from '@v1v/apm-rum-angular'
+import { ApmService } from 'v1v-apm-rum-angular'
 
 const routes: Routes = [
   { path: 'contact', component: ContactListComponent },
@@ -76,7 +76,7 @@ to be shown in the `APM UI` and also logs them to the browser console.
 [source,js]
 ----
 import { ErrorHandler } from '@angular/core'
-import { ApmErrorHandler } from '@v1v/apm-rum-angular'
+import { ApmErrorHandler } from 'v1v-apm-rum-angular'
 
 @NgModule({
   providers: [

@@ -26,14 +26,14 @@ Install the APM agent for JavaScript as a dependency to your application:
 
 [source,bash]
 ----
-npm install @v1v/apm-rum --save
+npm install v1v-apm-rum --save
 ----
 
 Configure the agent:
 
 [source,js]
 ----
-import { init as initApm } from '@v1v/apm-rum'
+import { init as initApm } from 'v1v-apm-rum'
 const apm = initApm({
   
   // Set required service name (allowed characters: a-z, A-Z, 0-9, -, _, and space)
@@ -53,8 +53,8 @@ const apm = initApm({
 
 Add a <script> tag to the HTML page and use the `elasticApm` global object to load and initialize the agent:
 
-NOTE: Please download the latest version of JavaScript agent from https://github.com/elastic/apm-agent-rum-js/releases/latest[GitHub] or
-https://unpkg.com/@v1v/apm-rum/dist/bundles/v1v-apm-rum.umd.min.js[UNPKG] and host the file in your Server/CDN before deploying to production.
+NOTE: Please download the latest version of JavaScript agent from https://github.com/v1v/apm-agent-rum-js/releases/latest[GitHub] or
+https://unpkg.com/v1v-apm-rum/dist/bundles/v1v-apm-rum.umd.min.js[UNPKG] and host the file in your Server/CDN before deploying to production.
 
 [source,html]
 ----

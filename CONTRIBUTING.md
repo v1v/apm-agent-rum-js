@@ -99,21 +99,21 @@ $ APM_SERVER_URL=<server-url> npm run test
 To run all the tests on individual package set the `SCOPE` environment variable and start the tests
 
 ```sh
-$ APM_SERVER_URL=<server-url> SCOPE=@v1v/apm-rum npm run test
+$ APM_SERVER_URL=<server-url> SCOPE=v1v-apm-rum npm run test
 ```
 
 ##### Unit tests
 ```sh
-$ npx lerna run --scope @v1v/apm-rum test:unit
+$ npx lerna run --scope v1v-apm-rum test:unit
 
 // to run tests in watch mode
 
-$ npx lerna run --scope @v1v/apm-rum karma:dev -- --grep <path-to-test-file>
+$ npx lerna run --scope v1v-apm-rum karma:dev -- --grep <path-to-test-file>
 ```
 
 ##### Integration tests
 ```sh
-$ npx lerna run --scope @v1v/apm-rum test:integration
+$ npx lerna run --scope v1v-apm-rum test:integration
 ```
 
 ##### E2E tests (Saucelabs)
@@ -121,7 +121,7 @@ $ npx lerna run --scope @v1v/apm-rum test:integration
 E2E tests are run on Saucelabs, Before running these tests we have to set some environment variables to run all the tests on Saucelabs
 
 ```sh
-$ MODE=saucelabs SAUCE_USERNAME=<username> SAUCE_ACCESS_KEY=<access-key> npx lerna run --scope @v1v/apm-rum test:sauce
+$ MODE=saucelabs SAUCE_USERNAME=<username> SAUCE_ACCESS_KEY=<access-key> npx lerna run --scope v1v-apm-rum test:sauce
 ```
 
 ### Linting

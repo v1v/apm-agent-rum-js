@@ -23,7 +23,7 @@
  *
  */
 
-import { isPlatformSupported, patchAll } from '@v1v/apm-rum-core'
+import { isPlatformSupported, patchAll } from 'v1v-apm-rum-core'
 
 var alreadyBootstrap = false
 var enabled = false

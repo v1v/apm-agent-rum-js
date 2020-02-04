@@ -1,5 +1,5 @@
 {
-  "name": "@v1v/apm-rum-angular",
+  "name": "v1v-apm-rum-angular",
   "version": "0.4.1",
   "description": "Elastic APM Real User Monitoring for Angular applications",
   "homepage": "https://www.elastic.co/guide/en/apm/agent/rum-js/current/index.html",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/elastic/apm-agent-rum-js.git",
+    "url": "https://github.com/v1v/apm-agent-rum-js.git",
     "directory": "packages/rum-angular"
   },
   "engines": {
@@ -37,8 +37,8 @@
     "karma:coverage": "karma start --coverage --singleRun"
   },
   "dependencies": {
-    "@v1v/apm-rum": "file:../rum",
-    "@v1v/apm-rum-core": "file:../rum-core"
+    "v1v-apm-rum": "file:../rum",
+    "v1v-apm-rum-core": "file:../rum-core"
   },
   "peerDependencies": {
     "@angular/core": "^8.0.0",

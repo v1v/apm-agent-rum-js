@@ -25,7 +25,7 @@
 
 import { Router, NavigationStart } from '@angular/router'
 import { Injectable } from '@angular/core'
-import { scheduleMicroTask } from '@v1v/apm-rum-core'
+import { scheduleMicroTask } from 'v1v-apm-rum-core'
 
 @Injectable({
   providedIn: 'root'

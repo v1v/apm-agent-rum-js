@@ -1,6 +1,6 @@
-:pull: https://github.com/elastic/apm-agent-rum-js/pull/
-:issue: https://github.com/elastic/apm-agent-rum-js/issues/
-:commit: https://github.com/elastic/apm-agent-rum-js/commit/
+:pull: https://github.com/v1v/apm-agent-rum-js/pull/
+:issue: https://github.com/v1v/apm-agent-rum-js/issues/
+:commit: https://github.com/v1v/apm-agent-rum-js/commit/
 
 [[release-notes]]
 == Release notes
