@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.0.0 (2020-02-05)
+
+
+### Bug Fixes
+
+* **rum:** add constructor types for ApmBase class ([#562](https://github.com/v1v/apm-agent-rum-js/issues/562)) ([273f63f](https://github.com/v1v/apm-agent-rum-js/commit/273f63fe3763c5566c45ce02755279ccc7faabb3))
+* **rum:** do not polyfill the global Promise variable ([#366](https://github.com/v1v/apm-agent-rum-js/issues/366)) ([f5dc95c](https://github.com/v1v/apm-agent-rum-js/commit/f5dc95c4c0d69494d706b70af3782ff4b37e6081))
+* **rum:** keep page load transaction until load ([#224](https://github.com/v1v/apm-agent-rum-js/issues/224)) ([29afb27](https://github.com/v1v/apm-agent-rum-js/commit/29afb2745e80007dec957919a9ae783b48eb6dd0))
+* **rum:** log unsupported message only on browser environment ([#382](https://github.com/v1v/apm-agent-rum-js/issues/382)) ([ff759d1](https://github.com/v1v/apm-agent-rum-js/commit/ff759d10caccd82e2fa7d8794a7220d0c1f1293b))
+* **rum:** noop for API when agent is inactive ([#569](https://github.com/v1v/apm-agent-rum-js/issues/569)) ([77d4f6d](https://github.com/v1v/apm-agent-rum-js/commit/77d4f6da20bf113bf803652fd01c8d785eea3722))
+* **rum:** publish all packages as transpiled modules ([#432](https://github.com/v1v/apm-agent-rum-js/issues/432)) ([1f4ee87](https://github.com/v1v/apm-agent-rum-js/commit/1f4ee873429e678f39d23076bead1e6399c49525))
+* **rum:** return noop agent when config is inactive ([#239](https://github.com/v1v/apm-agent-rum-js/issues/239)) ([7deef2d](https://github.com/v1v/apm-agent-rum-js/commit/7deef2d8a6b65c63fc1a268d878d8ba822a7b006))
+* **rum:** sync version mumber with latest published version ([#362](https://github.com/v1v/apm-agent-rum-js/issues/362)) ([909f480](https://github.com/v1v/apm-agent-rum-js/commit/909f480aaae20ad6dfcc4f23108bed32ba33a297))
+* **rum-core:** capture all spans as part of page-load transaction ([#273](https://github.com/v1v/apm-agent-rum-js/issues/273)) ([0122bf7](https://github.com/v1v/apm-agent-rum-js/commit/0122bf71b62e48481833fdae0e2abd0cd79d9c73))
+* **rum-core:** hardcode agent name and version in service metadata ([#236](https://github.com/v1v/apm-agent-rum-js/issues/236)) ([a90337d](https://github.com/v1v/apm-agent-rum-js/commit/a90337d949f4606a23b5095d36f7994665135c4d))
+* **rum-core:** schedule xhr invoke task as a macro task ([#480](https://github.com/v1v/apm-agent-rum-js/issues/480)) ([d4f181f](https://github.com/v1v/apm-agent-rum-js/commit/d4f181fd6c521dd85ec4d5a8abc9b516a75fb269)), closes [#390](https://github.com/v1v/apm-agent-rum-js/issues/390)
+
+
+### Features
+
+* rename packages ([364d71d](https://github.com/v1v/apm-agent-rum-js/commit/364d71de02d95cfc373ce46cdf0a0bab3374abfc))
+* **rum:** add typescript typings ([#537](https://github.com/v1v/apm-agent-rum-js/issues/537)) ([dc4f391](https://github.com/v1v/apm-agent-rum-js/commit/dc4f391fe228a01b7b8e640a73127257a52d5d52))
+* capture http-request transactions ([#517](https://github.com/v1v/apm-agent-rum-js/issues/517)) ([27ed994](https://github.com/v1v/apm-agent-rum-js/commit/27ed994ea9866e4493015eb3817ab12266f572a5))
+* **rum:** better log message on invalid configuration ([#216](https://github.com/v1v/apm-agent-rum-js/issues/216)) ([b65a806](https://github.com/v1v/apm-agent-rum-js/commit/b65a8067994b45100fef7d442c3bcce01d64d5a9))
+* **rum:** deprecate addTags in favor of addLabels ([#270](https://github.com/v1v/apm-agent-rum-js/issues/270)) ([3e313d3](https://github.com/v1v/apm-agent-rum-js/commit/3e313d3adbce1508da5b2d738751fb4b97bfff57))
+* **rum-core:** add event listeners for transactions ([#279](https://github.com/v1v/apm-agent-rum-js/issues/279)) ([d98f7c7](https://github.com/v1v/apm-agent-rum-js/commit/d98f7c7166b605c7fb4b4c97a4389461915672cb))
+* **rum-core:** Add task API ([#194](https://github.com/v1v/apm-agent-rum-js/issues/194)) ([0153229](https://github.com/v1v/apm-agent-rum-js/commit/015322981c1c560420b8838fbb144d10b64c2eda))
+* **rum-core:** capture unhandled promise rejection as errors ([#427](https://github.com/v1v/apm-agent-rum-js/issues/427)) ([ef34ccc](https://github.com/v1v/apm-agent-rum-js/commit/ef34ccc1f8d8784f31d7ee2e5fb9ba9aac3439d4))
+* **rum-core:** improve the debug logs with transaction details ([#469](https://github.com/v1v/apm-agent-rum-js/issues/469)) ([b9629b4](https://github.com/v1v/apm-agent-rum-js/commit/b9629b450b1eff9b0a53bcaff5a28c9926c61d49))
+* **rum-core:** use etag for fetching config ([#439](https://github.com/v1v/apm-agent-rum-js/issues/439)) ([bac0e15](https://github.com/v1v/apm-agent-rum-js/commit/bac0e15aeccfa84423e102b1b7ea3716ac7826f0))
+* Initial react integration ([#265](https://github.com/v1v/apm-agent-rum-js/issues/265)) ([83cbebd](https://github.com/v1v/apm-agent-rum-js/commit/83cbebd7f8a0ae12f2b420e9095d4efff8d10d73))
+* Introduce managed transaction option ([#440](https://github.com/v1v/apm-agent-rum-js/issues/440)) ([a08f210](https://github.com/v1v/apm-agent-rum-js/commit/a08f21093735abf578be1de46f03beb89368ef88))
+* Support central config management ([#415](https://github.com/v1v/apm-agent-rum-js/issues/415)) ([1382cc9](https://github.com/v1v/apm-agent-rum-js/commit/1382cc972d6c1b215374b76fe1f965717b6c2fcd))
+* **rum-core:** patch history API ([#259](https://github.com/v1v/apm-agent-rum-js/issues/259)) ([be58997](https://github.com/v1v/apm-agent-rum-js/commit/be58997e1efa212dd0eabdf427fbbff1b9662a43))
+
+
+### Performance Improvements
+
+* **rum:** move to ES6 modules to reduce bundle size ([#237](https://github.com/v1v/apm-agent-rum-js/issues/237)) ([7aa4351](https://github.com/v1v/apm-agent-rum-js/commit/7aa43513ad75736ae42410cc32ae1a44bc31280c))
+* **rum:** remove debug logs on production build ([#245](https://github.com/v1v/apm-agent-rum-js/issues/245)) ([2565844](https://github.com/v1v/apm-agent-rum-js/commit/2565844febe9596eafe0f9fc07627bb23b0f097e))
+
+
+### Reverts
+
+* Revert "chore(release): publish" ([d7bfbbb](https://github.com/v1v/apm-agent-rum-js/commit/d7bfbbb95cda811f62da3cea062176430c465c92))
+* Revert "chore(release): publish" ([01ae708](https://github.com/v1v/apm-agent-rum-js/commit/01ae708d427db35f485a7ed5eec1f643b70250ff))
+* Revert "chore(release): publish" ([268555d](https://github.com/v1v/apm-agent-rum-js/commit/268555d006b2c423ce54e2ee5dd0694d566a337a))
+* Revert "chore(release): publish" ([1e79230](https://github.com/v1v/apm-agent-rum-js/commit/1e7923048f686457589058bf532ee6e4133bdbf1))
+
+
+* BREAKING CHANGE: move IE 10 and Android 4 to unsupported list (#196) ([16f4440](https://github.com/v1v/apm-agent-rum-js/commit/16f444062331d8f14e58cc4fa3ad72c9d0e1b35f)), closes [#196](https://github.com/v1v/apm-agent-rum-js/issues/196)
+
+
+### BREAKING CHANGES
+
+* Dropping the support for IE 10 and android 4* versions. Bundling condigurations and testing environments are changed to reflect the same
+
+* parallelize the e2e tests and use single tunnel
+
+* update contributing.md
+
+
+
+
+
 ## [4.7.1](https://github.com/v1v/apm-agent-rum-js/compare/v1v-apm-rum@4.7.0...v1v-apm-rum@4.7.1) (2020-01-30)
 
 **Note:** Version bump only for package v1v-apm-rum
