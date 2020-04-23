@@ -100,7 +100,7 @@
     "airbnb-browser-shims": "^3.3.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "babel-plugin-istanbul": "^5.2.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-transform-typescript-metadata": "^0.2.2",
     "benchmark": "^2.1.4",
     "bundlesize": "^0.18.0",
